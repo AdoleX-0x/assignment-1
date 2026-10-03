@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AltSchool Africa application form">
+  <title>AltSchool Application Form</title>
+</head>
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <header>
+    <nav aria-label="Global navigation">
+      <ul>
+        <li><a href="index.html">Home (Assignment 1)</a></li>
+        <li><a href="form.html" aria-current="page">Application Form</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <h1>AltSchool Africa Application</h1>
+    <p>Fill in the details below to apply. Fields marked with * are required.</p>
+
+    <form action="#" method="post">
+
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <p>
+          <label for="first-name">First name *</label><br>
+          <input type="text" id="first-name" name="firstName" autocomplete="given-name" required>
+        </p>
+
+        <p>
+          <label for="last-name">Last name *</label><br>
+          <input type="text" id="last-name" name="lastName" autocomplete="family-name" required>
+        </p>
+
+        <p>
+          <label for="email">Email address *</label><br>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </p>
+
+        <p>
+          <label for="phone">Phone number *</label><br>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+234 800 000 0000" required>
+        </p>
+
+        <p>
+          <label for="dob">Date of birth *</label><br>
+          <input type="date" id="dob" name="dob" autocomplete="bday" required>
+        </p>
+
+        <fieldset>
+          <legend>Gender *</legend>
+          <p>
+            <input type="radio" id="gender-female" name="gender" value="female" required>
+            <label for="gender-female">Female</label>
+            <input type="radio" id="gender-male" name="gender" value="male">
+            <label for="gender-male">Male</label>
+            <input type="radio" id="gender-other" name="gender" value="other">
+            <label for="gender-other">Prefer not to say</label>
+          </p>
+        </fieldset>
+      </fieldset>
+
+      <fieldset>
+        <legend>Location</legend>
+
+        <p>
+          <label for="country">Country *</label><br>
+          <select id="country" name="country" autocomplete="country-name" required>
+            <option value="">Select a country</option>
+            <option value="nigeria">Nigeria</option>
+            <option value="ghana">Ghana</option>
+            <option value="kenya">Kenya</option>
+            <option value="south-africa">South Africa</option>
+            <option value="other">Other</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="state">State / Region *</label><br>
+          <input type="text" id="state" name="state" required>
+        </p>
+
+        <p>
+          <label for="address">Residential address</label><br>
+          <textarea id="address" name="address" rows="3" cols="40" autocomplete="street-address"></textarea>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Program Details</legend>
+
+        <p>
+          <label for="school">School of choice *</label><br>
+          <select id="school" name="school" required>
+            <option value="">Select a school</option>
+            <option value="engineering">School of Engineering</option>
+            <option value="data">School of Data</option>
+            <option value="product">School of Product</option>
+            <option value="cloud">School of Cloud Engineering</option>
+            <option value="cybersecurity">School of Cybersecurity</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="track">Track *</label><br>
+          <select id="track" name="track" required>
+            <option value="">Select a track</option>
+            <option value="frontend">Frontend Engineering</option>
+            <option value="backend">Backend Engineering</option>
+            <option value="data-analysis">Data Analysis</option>
+            <option value="product-design">Product Design</option>
+          </select>
+        </p>
+
+        <fieldset>
+          <legend>Current level of experience *</legend>
+          <p>
+            <input type="radio" id="level-beginner" name="experience" value="beginner" required>
+            <label for="level-beginner">Beginner</label>
+            <input type="radio" id="level-intermediate" name="experience" value="intermediate">
+            <label for="level-intermediate">Intermediate</label>
+            <input type="radio" id="level-advanced" name="experience" value="advanced">
+            <label for="level-advanced">Advanced</label>
+          </p>
+        </fieldset>
+
+        <p>
+          <label for="source">How did you hear about AltSchool? *</label><br>
+          <select id="source" name="source" required>
+            <option value="">Select an option</option>
+            <option value="social-media">Social media</option>
+            <option value="friend">Friend or family</option>
+            <option value="search">Search engine</option>
+            <option value="event">Event or webinar</option>
+            <option value="other">Other</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="motivation">Why do you want to join AltSchool? *</label><br>
+          <textarea id="motivation" name="motivation" rows="5" cols="40" required></textarea>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Account</legend>
+
+        <p>
+          <label for="password">Password *</label><br>
+          <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" required>
+        </p>
+
+        <p>
+          <label for="confirm-password">Confirm password *</label><br>
+          <input type="password" id="confirm-password" name="confirmPassword" autocomplete="new-password" minlength="8" required>
+        </p>
+      </fieldset>
+
+      <p>
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I agree to the terms and conditions and privacy policy *</label>
+      </p>
+
+      <p>
+        <button type="submit">Submit application</button>
+        <button type="reset">Clear form</button>
+      </p>
+    </form>
+  </main>
+
+  <footer>
+    <address>
+      Daniel Adole Ejeh<br>
+      Abuja, Federal Capital Territory, Nigeria
+    </address>
+    <p><small>&copy; 2026 Daniel Adole Ejeh. All rights reserved.</small></p>
+  </footer>
+</body>
+</html>
