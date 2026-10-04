@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="First assignment home page">
-  <title>Assignment 1 - Home</title>
+  <meta name="description" content="How the Web Works: A Journey from URL to Screen, by Daniel Ejeh">
+  <meta name="author" content="Daniel Ejeh">
+  <title>How the Web Works: A Journey from URL to Screen</title>
 </head>
 <body>
   <a href="#main-content">Skip to main content</a>
@@ -19,8 +20,159 @@
   </header>
 
   <main id="main-content">
-    <h1>Assignment 1</h1>
-    <p>Replace this section with the content of your first assignment.</p>
+    <article>
+      <header>
+        <h1>How the Web Works: A Journey from URL to Screen</h1>
+        <p>By <strong>Daniel Ejeh</strong></p>
+        <p>
+          <time datetime="2026-09-13">Sep 13, 2026</time> &middot; 5 min read
+        </p>
+      </header>
+
+      <p>Every day, billions of people type a web address into a browser, tap a link, or ask a search engine a question and in a fraction of a second, a page appears. It feels instant and almost magical. But underneath that simplicity is a carefully engineered system of protocols, servers, and standards that have been refined over more than three decades. This article breaks down what actually happens when you use the web, piece by piece.</p>
+
+      <section>
+        <h2>1. The Web vs. the Internet</h2>
+        <p>Before going further, it helps to separate two terms people often use interchangeably.</p>
+        <ul>
+          <li>The <strong>Internet</strong> is the physical and logical infrastructure, a global network of interconnected computers, routers, and cables (including undersea fiber-optic lines) that can exchange data.</li>
+          <li>The <strong>Web (World Wide Web)</strong> is a service that runs on top of the internet. It&rsquo;s a system of linked documents and resources, accessed using web browsers, identified by URLs, and delivered mainly through the HTTP/HTTPS protocol.</li>
+        </ul>
+        <p>The internet also carries other services like email, file transfer, video calls but the web is by far the most visible one to everyday users.</p>
+      </section>
+
+      <section>
+        <h2>2. It Starts with an Address: The URL</h2>
+        <p>Everything begins with a URL (Uniform Resource Locator), such as:</p>
+        <pre><code>https://www.example.com/articles/how-the-web-works</code></pre>
+        <p>This string is broken into parts the browser understands:</p>
+        <ul>
+          <li><strong>Scheme</strong> (<code>https://</code>) &mdash; tells the browser which protocol to use.</li>
+          <li><strong>Domain name</strong> (<code>www.example.com</code>) &mdash; the human-readable address of the server.</li>
+          <li><strong>Path</strong> (<code>/articles/how-the-web-works</code>) &mdash; the specific resource being requested on that server.</li>
+        </ul>
+        <p>Humans read domain names, but computers route traffic using numerical IP addresses. This is where the next step comes in.</p>
+      </section>
+
+      <section>
+        <h2>3. DNS: The Internet&rsquo;s Phonebook</h2>
+        <p>To convert <code>www.example.com</code> into something like <code>93.184.216.34</code>, the browser consults the Domain Name System (DNS).</p>
+        <p>The lookup typically follows this path:</p>
+        <ol>
+          <li>The browser checks its own cache, has it looked this up recently?</li>
+          <li>If not, it asks the operating system, which may also have a cached answer.</li>
+          <li>If still unresolved, the query goes to a DNS resolver (often run by your ISP or a public service).</li>
+          <li>The resolver queries a hierarchy of DNS servers starting with root servers, then top-level domain (TLD) servers (like those managing <code>.com</code>), and finally the authoritative name server for that specific domain until it finds the IP address.</li>
+        </ol>
+        <p>This entire process usually takes only milliseconds, and the result is cached at multiple levels so it doesn&rsquo;t need to be repeated for every request.</p>
+      </section>
+
+      <section>
+        <h2>4. Establishing a Connection</h2>
+        <p>With an IP address in hand, the browser needs to establish a reliable connection to the server.</p>
+        <ul>
+          <li><strong>TCP handshake:</strong> Most web traffic runs over TCP (Transmission Control Protocol), which starts with a three-way handshake (SYN, SYN-ACK, ACK) to establish a stable, ordered connection between client and server.</li>
+          <li><strong>TLS handshake (for HTTPS):</strong> If the site uses HTTPS &mdash; which is now the vast majority of the web &mdash; an additional TLS (Transport Layer Security) handshake happens. This negotiates encryption keys and verifies the server&rsquo;s identity using a digital certificate, ensuring the data exchanged can&rsquo;t be easily intercepted or tampered with.</li>
+        </ul>
+        <p>Newer protocols like QUIC (used by HTTP/3) combine these steps and run over UDP instead of TCP, reducing the number of round trips needed and speeding up connection setup &mdash; especially valuable on mobile networks.</p>
+      </section>
+
+      <section>
+        <h2>5. The HTTP Request</h2>
+        <p>Once connected, the browser sends an HTTP request to the server. A simplified version looks like this:</p>
+        <pre><code>GET /articles/how-the-web-works HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 ...
+Accept: text/html</code></pre>
+        <p>This request includes:</p>
+        <ul>
+          <li>A <strong>method</strong> (<code>GET</code> to retrieve data, <code>POST</code> to submit data, etc.)</li>
+          <li><strong>Headers</strong> with metadata (browser type, accepted formats, cookies, authentication tokens)</li>
+          <li>Sometimes a <strong>body</strong>, if sending data such as a form submission</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. What Happens on the Server</h2>
+        <p>The server receiving this request isn&rsquo;t just a passive file cabinet. Depending on the site, it might:</p>
+        <ul>
+          <li>Serve a static file directly (an HTML page, image, or stylesheet)</li>
+          <li>Run application code (in languages like Python, JavaScript/Node.js, PHP, Java, or Go) to generate a page dynamically</li>
+          <li>Query a database to fetch content &mdash; user profiles, product listings, articles</li>
+          <li>Call other internal services or APIs</li>
+          <li>Apply authentication and authorization checks</li>
+        </ul>
+        <p>Many popular sites don&rsquo;t rely on a single server at all. They use load balancers to distribute traffic across many servers, and content delivery networks (CDNs) to serve static content (images, videos, scripts) from locations physically closer to the user, reducing latency.</p>
+      </section>
+
+      <section>
+        <h2>7. The HTTP Response</h2>
+        <p>Once processed, the server sends back an HTTP response:</p>
+        <pre><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 5824
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;...&lt;/html&gt;</code></pre>
+        <p>Key parts include:</p>
+        <ul>
+          <li>A <strong>status code</strong> (200 for success, 404 for not found, 500 for server error, 301 for redirect, and many others)</li>
+          <li><strong>Headers</strong> describing the content type, caching rules, and cookies</li>
+          <li>The <strong>body</strong> &mdash; typically HTML, but could be JSON, an image, or other data</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>8. Rendering: Turning Code into a Page</h2>
+        <p>This is where the browser does its heavy lifting. The process generally follows these stages:</p>
+        <ol>
+          <li><strong>Parsing HTML</strong> &mdash; the browser reads the HTML and builds the DOM (Document Object Model), a tree-like structure representing the page&rsquo;s elements.</li>
+          <li><strong>Parsing CSS</strong> &mdash; stylesheets are parsed into the CSSOM (CSS Object Model), describing how each element should look.</li>
+          <li><strong>Combining into a render tree</strong> &mdash; the DOM and CSSOM are merged to determine what&rsquo;s actually visible and how it&rsquo;s styled.</li>
+          <li><strong>Layout (reflow)</strong> &mdash; the browser calculates the exact size and position of every element on the page.</li>
+          <li><strong>Paint</strong> &mdash; pixels are drawn to the screen based on that layout.</li>
+          <li><strong>JavaScript execution</strong> &mdash; scripts may run at various points, modifying the DOM, fetching additional data, or responding to user interaction. This can trigger the layout and paint steps to repeat.</li>
+        </ol>
+        <p>Modern pages often fetch additional resources during this process &mdash; images, fonts, further scripts, or data from APIs &mdash; each requiring its own request-response cycle, though browsers parallelize many of these for speed.</p>
+      </section>
+
+      <section>
+        <h2>9. Interactivity and the Modern Web</h2>
+        <p>Early web pages were mostly static documents. Today, much of the web behaves more like software:</p>
+        <ul>
+          <li><strong>JavaScript frameworks</strong> (React, Vue, Angular, Svelte, and others) let developers build highly interactive interfaces.</li>
+          <li><strong>APIs</strong> (often using REST or GraphQL) allow the browser to fetch data without reloading the whole page &mdash; this is the basis of AJAX and single-page applications (SPAs).</li>
+          <li><strong>WebSockets</strong> enable persistent, two-way connections for real-time features like chat apps or live notifications.</li>
+          <li><strong>Service workers and caching strategies</strong> allow web apps to work offline or load near-instantly on repeat visits.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>10. The Invisible Standards Holding It Together</h2>
+        <p>None of this works without agreed-upon rules. Organizations like the W3C (World Wide Web Consortium) and the IETF (Internet Engineering Task Force) maintain the standards for HTML, CSS, HTTP, and related technologies, ensuring that a page built by one developer, using one browser, renders consistently for users everywhere on different devices and browsers.</p>
+      </section>
+
+      <section>
+        <h2>Putting It All Together</h2>
+        <p>To recap the full journey from typing a URL to seeing a rendered page:</p>
+        <ol>
+          <li>You enter a URL or click a link.</li>
+          <li>The browser resolves the domain name to an IP address via DNS.</li>
+          <li>A connection is established (TCP, then TLS for HTTPS).</li>
+          <li>The browser sends an HTTP request to the server.</li>
+          <li>The server processes the request &mdash; possibly querying a database or running application logic &mdash; and sends back a response.</li>
+          <li>The browser parses the HTML/CSS, builds the DOM and CSSOM, and renders the page.</li>
+          <li>JavaScript runs, enabling interactivity and additional data fetching.</li>
+        </ol>
+        <p>All of this typically happens in under a second. What feels like a single, seamless action is actually a relay of dozens of small, precise steps across a global network &mdash; a system built collaboratively over decades that now underpins how the world communicates, works, shops, and learns.</p>
+      </section>
+
+      <footer>
+        <p>Topics: Web Development, Technology, Programming, Computer Science, Software Engineering</p>
+        <p>Written by Daniel Ejeh</p>
+      </footer>
+    </article>
+
     <p><a href="form.html">Go to the application form</a></p>
   </main>
 
